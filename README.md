@@ -12,7 +12,7 @@
 * create_class_Tolerant_Cartesian_3D_Vector
 * create_class_Tolerant_Versatile_Vector
 
-Simple example:
+### Simple example:
 
 ```python
 >>> from skvectors import create_class_Cartesian_3D_Vector
