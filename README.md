@@ -12,5 +12,16 @@
 * create_class_Tolerant_Cartesian_3D_Vector
 * create_class_Tolerant_Versatile_Vector
 
-Tor Olav
+Simple example:
 
+```python
+>>> from skvectors import create_class_Cartesian_3D_Vector
+>>> V3D = create_class_Cartesian_3D_Vector('V3D', 'xyz')
+>>> V3D(-1, 2, 4).cross(V3D(0, 3, -2))
+V3D(x=-16, y=-2, z=-3)
+>>> 
+```
+
+More to come soon...
+
+Tor Olav
