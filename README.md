@@ -12,13 +12,27 @@
 * create_class_Tolerant_Cartesian_3D_Vector
 * create_class_Tolerant_Versatile_Vector
 
-### Simple example:
+### Simple examples:
 
 ```python
 >>> from skvectors import create_class_Cartesian_3D_Vector
+>>> 
 >>> V3D = create_class_Cartesian_3D_Vector('V3D', 'xyz')
 >>> V3D(-1, 2, 4).cross(V3D(0, 3, -2))
 V3D(x=-16, y=-2, z=-3)
+>>> 
+```
+
+```python
+>>> from skvectors import create_class_Cartesian_Vector
+>>> 
+>>> V6D = create_class_Cartesian_Vector('V6D', [ 'first', 'second', 'third', 'fourth', 'fifth', 'sixth' ])
+>>> v = V6D(3.2, 1.1, 0.5, -2.9, 4.7, 2.4)
+>>> v.sixth = 9.9
+>>> v
+V6D(first=3.2, second=1.1, third=0.5, fourth=-2.9, fifth=4.7, sixth=9.9)
+>>> v.length()
+11.841030360572512
 >>> 
 ```
 
@@ -82,4 +96,4 @@ NP3(αα=array([-27.33663766, -48.63172697, -15.85742691,  -2.94129394,
 
 More to come soon...
 
-Tor Olav
+Tor Olav Kristensen
