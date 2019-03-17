@@ -96,6 +96,8 @@ NP3(αα=array([-27.33663766, -48.63172697, -15.85742691,  -2.94129394,
 >>> 
 ```
 
+Also have a look in the examples folder.
+
 More to come soon...
 
 Tor Olav Kristensen
