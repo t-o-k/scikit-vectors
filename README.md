@@ -1,5 +1,7 @@
 # Functions to make n-dimensional vector classes:
 
+[![Build Status](https://travis-ci.org/t-o-k/scikit-vectors.svg?branch=master)](https://travis-ci.org/t-o-k/scikit-vectors)
+
 * create_class_Fundamental_Vector
 * create_class_Simple_Vector
 * create_class_Vector
