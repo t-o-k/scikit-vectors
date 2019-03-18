@@ -20,7 +20,9 @@ https://github.com/t-o-k/scikit-vectors
 
 ## Installation:
 
+```shell
 pip install scikit-vectors
+```
 
 ## Examples:
 
