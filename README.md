@@ -110,6 +110,15 @@ Also have a look in the examples folder.
 
 More to come soon...
 
+## Running the tests:
+
+```shell
+cd scikit-vectors
+python3 -m unittest discover
+```
+Here's more information:
+https://travis-ci.org/t-o-k/scikit-vectors
+
 ## License information:
 
 See the file LICENSE for information on terms & conditions for usage, and a DISCLAIMER OF ALL WARRANTIES.
