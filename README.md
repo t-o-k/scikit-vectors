@@ -14,6 +14,16 @@
 * create_class_Tolerant_Cartesian_3D_Vector
 * create_class_Tolerant_Versatile_Vector
 
+## Project homepage:
+
+https://github.com/t-o-k/scikit-vectors
+
+## Installation:
+
+pip install scikit-vectors
+
+## Examples:
+
 ### Simple examples:
 
 ```python
@@ -100,4 +110,12 @@ Also have a look in the examples folder.
 
 More to come soon...
 
+## License information:
+
+See the file LICENSE for information on terms & conditions for usage, and a DISCLAIMER OF ALL WARRANTIES.
+
+## Author:
+
 Tor Olav Kristensen
+
+http://subcube.com
