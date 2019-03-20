@@ -1,5 +1,5 @@
 """
-Copyright (c) 2017 Tor Olav Kristensen, http://subcube.com
+Copyright (c) 2017, 2019 Tor Olav Kristensen, http://subcube.com
 https://github.com/t-o-k/scikit-vectors
 Use of this source code is governed by a BSD-license that can be found in the LICENSE file.
 """
@@ -342,10 +342,10 @@ def create_class_Vector(name, component_names, *, brackets='<>', sep=', ', cnull
                 cunit = self._cunit
                 if len(named_cvalues) > 0:
                     self._cvalues = \
-	                [
-	                    cunit*named_cvalues[cns]
-	                    for cns in self._cnames
-	                ]
+	                    [
+	                        cunit*named_cvalues[cns]
+	                        for cns in self._cnames
+	                    ]
                 else:
                     self._cvalues = \
                         [
