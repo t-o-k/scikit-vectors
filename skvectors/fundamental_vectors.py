@@ -22,14 +22,14 @@ def check_identifier(identifier):
         )
     decimal_digits = '0123456789'
     first_char, *remaining_chars = identifier
-    valid_identifier = first_char in valid_chars
-    valid_identifier &= \
+    valid_first_char = first_char in valid_chars
+    valid_remaining_chars = \
         all(
             char in (valid_chars + decimal_digits)
             for char in remaining_chars
         )
 
-    return valid_identifier
+    return valid_first_char and valid_remaining_chars
 
 
 def verify_names(*, chk_names, ref_names):
