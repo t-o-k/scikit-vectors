@@ -446,7 +446,7 @@ def create_class_Fundamental_Vector(name, component_names, *, brackets='<>', sep
 
             if function is None:
                 function = getattr(cls, 'component_' + name)
-            name = 'vector_' + function.__name__
+            name = 'vector_' + name
             vector_function = hf.make_method_arg2(name, function)
             setattr(cls, name, vector_function)
 
@@ -457,7 +457,7 @@ def create_class_Fundamental_Vector(name, component_names, *, brackets='<>', sep
 
             if function is None:
                 function = getattr(cls, 'component_' + name)
-            name = 'vector_' + function.__name__
+            name = 'vector_' + name
             vector_function = hf.make_method_arg3(name, function)
             setattr(cls, name, vector_function)
 
