@@ -5,6 +5,8 @@ Use of this source code is governed by a BSD-license that can be found in the LI
 """
 
 from copy import copy
+from inspect import getfullargspec, isfunction, ismethod
+# import functools
 import skvectors.helper_functions as hf
 
 
@@ -430,9 +432,55 @@ def create_class_Fundamental_Vector(name, component_names, *, brackets='<>', sep
 
 
         @classmethod
+        def _verify_function(cls, name, function, no_of_arguments):
+
+            if function is None:
+                method_name = 'component_' + name
+                if not hasattr(cls, method_name):
+                    msg = \
+                        "class {cls.__name__} has no method named '{method_name}'" \
+                        .format_map(vars())
+                    raise AttributeError(msg)
+            else:
+                # function_types = \
+                #     (
+                #         types.FunctionType,
+                #         types.BuiltinFunctionType,
+                #         functools.partial
+                #     )
+                # if not isinstance(function, function_types):
+                if not (isfunction(function) or ismethod(function)):
+                    msg = \
+                        "The callable named '{name}' can not be used here" \
+                        .format_map(vars())
+                    raise TypeError(msg)
+                msg = \
+                    "The callable named '{name}' can not be called with {n} argument{s}" \
+                    .format(
+                        name = name,
+                        n = no_of_arguments,
+                        s = '' if no_of_arguments == 1 else 's'
+                    )
+                argspec = getfullargspec(function)
+                arg_count = len(argspec.args)
+                if argspec.defaults is not None:
+                    arg_count -= len(argspec.defaults)
+                if arg_count > no_of_arguments:
+                    raise TypeError(msg)
+                if arg_count < no_of_arguments and argspec.varargs is None:
+                    raise TypeError(msg)
+                kwonly_arg_count = len(argspec.kwonlyargs)
+                if argspec.defaults is not None:
+                    kwonly_arg_count -= len(argspec.kwonly_defaults)
+                if kwonly_arg_count > 0:
+                    raise TypeError(msg)
+
+
+        @classmethod
         def create_vector_method_arg1(cls, name, function=None):
             """TODO"""
 
+            cls._verify_function(name, function, 1)
             if function is None:
                 function = getattr(cls, 'component_' + name)
             name = 'vector_' + name
@@ -444,6 +492,7 @@ def create_class_Fundamental_Vector(name, component_names, *, brackets='<>', sep
         def create_vector_method_arg2(cls, name, function=None):
             """TODO"""
 
+            cls._verify_function(name, function, 2)
             if function is None:
                 function = getattr(cls, 'component_' + name)
             name = 'vector_' + name
@@ -455,6 +504,7 @@ def create_class_Fundamental_Vector(name, component_names, *, brackets='<>', sep
         def create_vector_method_arg3(cls, name, function=None):
             """TODO"""
 
+            cls._verify_function(name, function, 3)
             if function is None:
                 function = getattr(cls, 'component_' + name)
             name = 'vector_' + name
