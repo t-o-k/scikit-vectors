@@ -1,9 +1,10 @@
 """
-Copyright (c) 2017 Tor Olav Kristensen, http://subcube.com
+Copyright (c) 2017, 2019 Tor Olav Kristensen, http://subcube.com
 https://github.com/t-o-k/scikit-vectors
 Use of this source code is governed by a BSD-license that can be found in the LICENSE file.
 """
 
+import keyword
 import operator
 import math
 from functools import wraps
@@ -93,6 +94,19 @@ def setup_internal_functions(cls, functions):
             else:
                 method = staticmethod(fn)
                 setattr(cls, cfname, method)
+
+
+def verify_class_name(name):
+
+    if not isinstance(name, str):
+        msg = "The class name is not a string"
+        raise TypeError(msg)
+    if keyword.iskeyword(name):
+        msg = "The class name is a built in keyword"
+        raise ValueError(msg)
+    if not name.isidentifier():
+        msg = "The class name is not a valid identifier"
+        raise ValueError(msg)
 
 
 def setup_vector_class(*, cls, name, functions):
