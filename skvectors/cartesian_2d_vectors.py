@@ -1,5 +1,5 @@
 """
-Copyright (c) 2017 Tor Olav Kristensen, http://subcube.com
+Copyright (c) 2017, 2019 Tor Olav Kristensen, http://subcube.com
 https://github.com/t-o-k/scikit-vectors
 Use of this source code is governed by a BSD-license that can be found in the LICENSE file.
 """
@@ -13,6 +13,7 @@ def create_class_Cartesian_2D_Vector(name, component_names, *, brackets='<>', se
     Function that creates a cartesian vector class with 2 dimensions
     """
 
+    hf.verify_class_name(name)
     dimensions = 2
     component_names = [ *component_names ]
     if len(component_names) != dimensions:

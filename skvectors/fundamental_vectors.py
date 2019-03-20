@@ -1,5 +1,5 @@
 """
-Copyright (c) 2017 Tor Olav Kristensen, http://subcube.com
+Copyright (c) 2017, 2019 Tor Olav Kristensen, http://subcube.com
 https://github.com/t-o-k/scikit-vectors
 Use of this source code is governed by a BSD-license that can be found in the LICENSE file.
 """
@@ -81,6 +81,7 @@ def create_class_Fundamental_Vector(name, component_names, *, brackets='<>', sep
             raise ValueError(msg)
 
 
+    hf.verify_class_name(name)
     component_names = [ *component_names ]
     dimensions = len(set(component_names))
     brackets = [ str(br) for br in brackets ]

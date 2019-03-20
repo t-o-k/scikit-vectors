@@ -18,6 +18,7 @@ def create_class_Vector(name, component_names, *, brackets='<>', sep=', ', cnull
     The number of dimensions are determined by the number of component names
     """
 
+    hf.verify_class_name(name)
     if functions is None:
         functions = { }
 

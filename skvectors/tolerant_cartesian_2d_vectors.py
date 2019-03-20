@@ -1,5 +1,5 @@
 """
-Copyright (c) 2017 Tor Olav Kristensen, http://subcube.com
+Copyright (c) 2017, 2019 Tor Olav Kristensen, http://subcube.com
 https://github.com/t-o-k/scikit-vectors
 Use of this source code is governed by a BSD-license that can be found in the LICENSE file.
 """
@@ -15,6 +15,7 @@ def create_class_Tolerant_Cartesian_2D_Vector(name, component_names, *, brackets
     The number of dimensions are determined by the number of component names
     """
 
+    hf.verify_class_name(name)
     if functions is None:
         functions = { }
     C2DV = \
