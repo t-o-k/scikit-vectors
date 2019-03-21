@@ -121,6 +121,7 @@ More examples to come soon...
 ## Running the tests:
 
 ```shell
+git clone https://github.com/t-o-k/scikit-vectors
 cd scikit-vectors
 python3 -m unittest discover
 ```
