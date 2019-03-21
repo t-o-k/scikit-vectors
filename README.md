@@ -114,7 +114,7 @@ Also have a look in the [examples folder](examples).
 
 Here's an image created in the Trefoil Knot Tube example:
 
-![Trefoil Knot Tube](https://github.com/t-o-k/scikit-vectors/blob/master/examples/Trefoil_Knot_230x180.png)
+![Trefoil Knot Tube](https://raw.githubusercontent.com/t-o-k/scikit-vectors/development/examples/Trefoil_Knot_230x180.png)
 
 More examples to come soon...
 
