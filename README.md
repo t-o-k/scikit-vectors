@@ -18,6 +18,10 @@
 
 https://github.com/t-o-k/scikit-vectors
 
+## Project wiki:
+
+https://github.com/t-o-k/scikit-vectors/wiki
+
 ## Installation:
 
 scikit-vectors requires Python version 3.5 or higher.
