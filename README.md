@@ -129,7 +129,7 @@ NP3(αα=array([-27.33663766, -48.63172697, -15.85742691,  -2.94129394,
 >>> 
 ```
 
-Also have a look at the examples at [scikit-vectors](https://github.com/t-o-k/scikit-vectors_examples).
+Also have a look at the examples at [scikit-vectors_examples](https://github.com/t-o-k/scikit-vectors_examples).
 
 ## Running the tests:
 
