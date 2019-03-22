@@ -129,13 +129,12 @@ NP3(αα=array([-27.33663766, -48.63172697, -15.85742691,  -2.94129394,
 >>> 
 ```
 
-Also have a look in the [examples folder](examples).
+Also have a look at the examples at [scikit-vectors](https://github.com/t-o-k/scikit-vectors_examples).
 
 Here's an image created in the Trefoil Knot Tube example:
 
 ![Trefoil Knot Tube](https://raw.githubusercontent.com/t-o-k/scikit-vectors/development/examples/Trefoil_Knot_230x180.png)
 
-More examples to come soon...
 
 ## Running the tests:
 
