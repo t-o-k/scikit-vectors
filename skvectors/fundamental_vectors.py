@@ -5,7 +5,7 @@ Use of this source code is governed by a BSD-license that can be found in the LI
 """
 
 from copy import copy
-from inspect import getfullargspec, isfunction, ismethod
+from inspect import getfullargspec, isfunction # ismethod
 # import functools
 import skvectors.helper_functions as hf
 
@@ -449,15 +449,16 @@ def create_class_Fundamental_Vector(name, component_names, *, brackets='<>', sep
                 #         functools.partial
                 #     )
                 # if not isinstance(function, function_types):
+                function_name = getattr(function, '__name__', str(function))
                 if not (isfunction(function) or ismethod(function)):
                     msg = \
-                        "The callable named '{name}' can not be used here" \
+                        "{function_name} can not be used here" \
                         .format_map(vars())
                     raise TypeError(msg)
                 msg = \
-                    "The callable named '{name}' can not be called with {n} argument{s}" \
+                    "{function_name} can not be called with {n} argument{s}" \
                     .format(
-                        name = name,
+                        function_name = function_name,
                         n = no_of_arguments,
                         s = '' if no_of_arguments == 1 else 's'
                     )
