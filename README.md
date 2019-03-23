@@ -4,7 +4,7 @@
 
 This is a Python library with functions that create vector classes with 2, 3 or an arbitrary number of dimensions.
 
-The name of the classes to be created, and the names of their vector components are set when calling thee functions.
+The name of the classes to be created, and the names of their vector components are set when calling the functions.
 
 The brackets for the vectors and the seperators for their components can also be given as arguments to these functions.
 
