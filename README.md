@@ -1,16 +1,16 @@
-# Functions to create n-dimensional vector classes:
-
 [![Build Status](https://travis-ci.org/t-o-k/scikit-vectors.svg?branch=master)](https://travis-ci.org/t-o-k/scikit-vectors)
 
-## Project homepage:
+# Functions to create n-dimensional vector classes
+
+## Project homepage
 
 https://github.com/t-o-k/scikit-vectors
 
-## Project wiki:
+## Project wiki
 
 https://github.com/t-o-k/scikit-vectors/wiki
 
-## Installation:
+## Installation
 
 scikit-vectors requires Python version 3.5 or higher.
 
@@ -18,9 +18,9 @@ scikit-vectors requires Python version 3.5 or higher.
 pip install scikit-vectors
 ```
 
-## Examples:
+## Examples
 
-### Simple examples:
+### Simple examples
 
 ```python
 >>> from skvectors import create_class_Cartesian_Vector
@@ -63,7 +63,7 @@ V3D(x=-16, y=-2, z=-3)
 >>> 
 ```
 
-### Not so simple example with NumPy:
+### Not so simple example with NumPy
 
 ```python
 >>> from skvectors import create_class_Cartesian_3D_Vector
@@ -125,7 +125,7 @@ Also have a look at the examples here:
 
 https://github.com/t-o-k/scikit-vectors_examples
 
-## Running the tests:
+## Running the tests
 
 ```shell
 git clone https://github.com/t-o-k/scikit-vectors
@@ -135,11 +135,11 @@ python3 -m unittest discover
 Here's more information:
 https://travis-ci.org/t-o-k/scikit-vectors
 
-## License information:
+## License information
 
 See the file LICENSE for information on terms & conditions for usage, and a DISCLAIMER OF ALL WARRANTIES.
 
-## Author:
+## Author
 
 Tor Olav Kristensen
 
