@@ -5,7 +5,7 @@ Use of this source code is governed by a BSD-license that can be found in the LI
 """
 
 from copy import copy
-from inspect import getfullargspec, isfunction # ismethod
+from inspect import getfullargspec, isfunction, ismethod  # isbuiltin
 # import functools
 import skvectors.helper_functions as hf
 
