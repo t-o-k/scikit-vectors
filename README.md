@@ -71,11 +71,52 @@ SV(first=0.0, second=0.167, third=0.333, fourth=0.5, fifth=0.667, sixth=0.833)
 ```
 
 ```python
+>>> from math import pi
 >>> from skvectors import create_class_Cartesian_3D_Vector
->>> 
->>> V3D = create_class_Cartesian_3D_Vector('V3D', 'xyz')
->>> V3D(-1, 2, 4).cross(V3D(0, 3, -2))
-V3D(x=-16, y=-2, z=-3)
+>>> CV3D = create_class_Cartesian_3D_Vector('CV3D', 'xyz', brackets=[ '<< ', ' >>' ])
+>>> u = CV3D(3, 0, -4)
+>>> print(u)
+<< 3, 0, -4 >>
+>>> v = CV3D(1, -2, 3) * 2
+>>> repr(v)
+'CV3D(x=2, y=-4, z=6)'
+>>> u.length()
+5.0
+>>> u.normalize()
+CV3D(x=0.6, y=0.0, z=-0.8)
+>>> u.dot(v)
+-18
+>>> u.cross(v)
+CV3D(x=-16, y=-26, z=-12)
+>>> u = CV3D(4.5, -3.0, -1.5)
+>>> v = CV3D(-3, -3, -3)
+>>> u.angle(v) / pi
+0.49999999999999994
+>>> u = CV3D(5, -4, -3)
+>>> v = CV3D(-2, 0, 2)
+>>> u.project(v)
+CV3D(x=4.0, y=-0.0, z=-4.0)
+>>> u = CV3D(-5, 0, 0)
+>>> v = CV3D(0, 12, 0)
+>>> u.distance(v)
+13.0
+>>> u = CV3D(-3, 4, -5)
+>>> u.rotate_x(pi)
+CV3D(x=-3, y=-3.9999999999999996, z=5.000000000000001)
+>>> u = CV3D(-3, 4, -5)
+>>> v = CV3D(0, -10, -8)
+>>> u.axis_rotate(v, -pi)
+CV3D(x=2.999999999999999, y=-4.0, z=5.0)
+>>> u = CV3D(-3, 4, -5)
+>>> v = CV3D(-6, 0, 0)
+>>> w = CV3D(0, 0, 7)
+>>> u.reorient(v, w)
+CV3D(x=-5.0, y=4.0, z=3.0)
+>>> u = CV3D(0, -1, 2)
+>>> v = CV3D(-3, 4, -5)
+>>> w = CV3D(3, 1, 2)
+>>> u.stp(v, w)
+-21
 >>> 
 ```
 
