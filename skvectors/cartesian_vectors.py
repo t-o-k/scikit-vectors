@@ -145,9 +145,9 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
 
             dot = self.dot(other)
             orthogonal = self._equal_cnull(dot)
-### Trengs disse med numpy ?
-#             orthogonal = self.component_or(orthogonal, self.is_zero_vector())
-#             orthogonal = self.component_or(orthogonal, other.is_zero_vector())
+                ### Perhaps these are needed with numpy:
+                # orthogonal = self.component_or(orthogonal, self.is_zero_vector())
+                # orthogonal = self.component_or(orthogonal, other.is_zero_vector())
 
             return orthogonal
 
