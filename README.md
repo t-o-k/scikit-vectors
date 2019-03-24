@@ -37,34 +37,36 @@ pip install scikit-vectors
 ### Simple examples
 
 ```python
->>> from skvectors import create_class_Cartesian_Vector
->>> V6D = create_class_Cartesian_Vector('V6D', [ 'first', 'second', 'third', 'fourth', 'fifth', 'sixth' ])
->>> u = V6D(3, 1, 0, -3, 4, 2)
+>>> from skvectors import create_class_Simple_Vector
+>>> SV = create_class_Simple_Vector('SV', [ 'first', 'second', 'third', 'fourth', 'fifth', 'sixth' ])
+>>> u = SV(3, 1, -2, -3, 4, 2)
 >>> u
-V6D(first=3, second=1, third=0, fourth=-3, fifth=4, sixth=2)
->>> v = V6D(2, 2, 1, 3, 1, 4)
+SV(first=3, second=1, third=-2, fourth=-3, fifth=4, sixth=2)
+>>> v = SV(2, -2, 1, 3, 1, 4)
 >>> u * v + 10
-V6D(first=16, second=12, third=10, fourth=1, fifth=14, sixth=18)
+SV(first=16, second=8, third=8, fourth=1, fifth=14, sixth=18)
 >>> 2 * (u - v)
-V6D(first=2, second=-2, third=-2, fourth=-12, fifth=6, sixth=-4)
+SV(first=2, second=6, third=-6, fourth=-12, fifth=6, sixth=-4)
 >>> u**v / 2
-V6D(first=4.5, second=0.5, third=0.0, fourth=-13.5, fifth=2.0, sixth=8.0)
+SV(first=4.5, second=0.5, third=-1.0, fourth=-13.5, fifth=2.0, sixth=8.0)
 >>> u *= 2 / v
 >>> u
-V6D(first=3.0, second=1.0, third=0.0, fourth=-2.0, fifth=8.0, sixth=1.0)
+SV(first=3.0, second=-1.0, third=-4.0, fourth=-2.0, fifth=8.0, sixth=1.0)
 >>> u.first
 3.0
 >>> (u + v).sixth
 5.0
->>> u.fifth += 2
+>>> u.fifth += 20
 >>> u
-V6D(first=3.0, second=1.0, third=0.0, fourth=-2.0, fifth=10.0, sixth=1.0)
->>> u.length()
-10.723805294763608
->>> round((u - v).normalize(), 3)
-V6D(first=0.092, second=-0.092, third=-0.092, fourth=-0.46, fifth=0.829, sixth=-0.276)
->>> (u + 2).dot(v)
-42.0
+SV(first=3.0, second=-1.0, third=-4.0, fourth=-2.0, fifth=28.0, sixth=1.0)
+>>> u.c_add_third(24)
+SV(first=3.0, second=-1.0, third=20.0, fourth=-2.0, fifth=28.0, sixth=1.0)
+>>> u.c_imul_bar_second(1000)
+>>> u
+SV(first=3000.0, second=-1.0, third=-4000.0, fourth=-2000.0, fifth=28000.0, sixth=1000.0)
+>>> v = SV(0, 1, 2, 3, 4, 5) / 6
+>>> round(v, 3)
+SV(first=0.0, second=0.167, third=0.333, fourth=0.5, fifth=0.667, sixth=0.833)
 >>> 
 ```
 
