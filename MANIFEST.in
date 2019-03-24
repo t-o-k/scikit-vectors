@@ -1,1 +1,1 @@
-recursive-include skvectors/examples *.py *.ipynb *.pdf *.png
+recursive-include skvectors/doc *.pdf *.ipynb
