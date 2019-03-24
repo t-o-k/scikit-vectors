@@ -11,7 +11,7 @@ with open('README.md', 'r') as fh:
 
 setuptools.setup(
     name = 'scikit-vectors',
-    version = '0.6.1',
+    version = '0.6.2',
     author = 'Tor Olav Kristensen',
     author_email = 'tor.olav.k@gmail.com',
     description = 'Functions to create n-dimensional vector classes',
