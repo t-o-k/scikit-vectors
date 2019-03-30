@@ -4,13 +4,9 @@
 
 This is a Python library with functions that create vector classes with 2, 3 or an arbitrary number of dimensions.
 
-The name of the classes to be created, and the names of their vector components are set when calling the functions.
+The name of the classes to be created, and the names of their vector components are set when calling the functions. The brackets for the vectors and the seperators for their components can also be given as arguments to these functions.
 
-The brackets for the vectors and the seperators for their components can also be given as arguments to these functions.
-
-There are 11 functions that create vector classes. Each of them creates vector classes with a certain functionality.
-
-8 of the functions create vector classes with a cartesian coordinate system and 4 of the functions create vector classes with tolerances for comparing vectors.
+There are 11 functions that create vector classes. Each of them creates vector classes with a certain functionality. 8 of the functions create vector classes with a cartesian coordinate system and 4 of the functions create vector classes with tolerances for comparing vectors.
 
 Created vector classes can be extended with extra functionality for processing their vector instances and ther component values.
 
@@ -23,6 +19,8 @@ https://github.com/t-o-k/scikit-vectors
 ## Project wiki
 
 https://github.com/t-o-k/scikit-vectors/wiki
+
+The wiki has links to documents that shows how created vector classes can be used.
 
 ## Installation
 
