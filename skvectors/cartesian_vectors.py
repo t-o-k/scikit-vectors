@@ -66,9 +66,9 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
             """Limits a value so that it lies between two values"""
 
             cunit = cls._cunit
-            value = cunit*value
-            min_value = cunit*min_value
-            max_value = cunit*max_value
+            value = cunit * value
+            min_value = cunit * min_value
+            max_value = cunit * max_value
             clipped_value = cls.component_max(min_value, cls.component_min(value, max_value))
 
             return clipped_value
@@ -79,7 +79,7 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
 
             cnull = cls._cnull
             cunit = cls._cunit
-            value = cunit*value
+            value = cunit * value
             result = value == cnull
 
             return result
@@ -89,7 +89,7 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
         def _equal_cunit(cls, value):
 
             cunit = cls._cunit
-            value = cunit*value
+            value = cunit * value
             result = value == cunit
 
             return result
@@ -189,7 +189,7 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
         def dot(self, other):
             """The dot product (inner product) of two vectors"""
 
-            scalar = (self*other).sum_of_components()
+            scalar = (self * other).sum_of_components()
 
             return scalar
 
@@ -198,7 +198,7 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
             """The length (norm) of a vector"""
 
             cunit = self._cunit
-            length_of_vector = (self**(cunit*2)).sum_of_components()**(cunit/2)
+            length_of_vector = (self**(cunit * 2)).sum_of_components()**(cunit / 2)
 
             return length_of_vector
 
@@ -217,7 +217,7 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
 
             ls = self.length()
             try:
-                vector = self/ls
+                vector = self / ls
             except ZeroDivisionError as err:
                 msg = "The length of the vector is zero"
                 raise ZeroDivisionError(msg) from err
@@ -232,11 +232,11 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
             num = self.dot(other)
             den = other.dot(other)
             try:
-                s = num/den
+                s = num / den
             except ZeroDivisionError as err:
                 msg = "The length of the vector to project onto is zero"
                 raise ZeroDivisionError(msg) from err
-            vector = other*s
+            vector = other * s
 
             return vector
 
@@ -248,11 +248,11 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
             num = self.dot(self)
             den = self.dot(other)
             try:
-                s = num/den
+                s = num / den
             except ZeroDivisionError as err:
                 msg = "The vectors are orthogonal to each other"
                 raise ZeroDivisionError(msg) from err
-            vector = other*s
+            vector = other * s
 
             return vector
 
@@ -264,11 +264,11 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
             num = self.dot(other)
             den = other.dot(other)
             try:
-                s = num/den
+                s = num / den
             except ZeroDivisionError as err:
                 msg = "The length of the vector to reject from is zero"
                 raise ZeroDivisionError(msg) from err
-            vector = self - other*s
+            vector = self - other * s
 
             return vector
 
@@ -293,11 +293,11 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
 
             ls = self.length()
             lo = other.length()
-            vs = self*lo
-            vo = other*ls
+            vs = self * lo
+            vo = other * ls
             ln = (vs - vo).length()
             ld = (vs + vo).length()
-            angle_between = self.component_atan2(ln, ld)*2
+            angle_between = self.component_atan2(ln, ld) * 2
 
             return angle_between
 
@@ -310,7 +310,7 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
             lo = other.length()
             dot = self.dot(other)
             try:
-                cosine = dot/(ls*lo)
+                cosine = dot / (ls * lo)
             except ZeroDivisionError as err:
                 msg = "One (or both) of the vectors is a zero vector"
                 raise ZeroDivisionError(msg) from err
@@ -332,7 +332,7 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
 #         def __imatmul__(self, other):
 #             """TODO"""
 #
-#             self = self*self.dot(other)
+#             self = self * self.dot(other)
 #
 #             return self
 
