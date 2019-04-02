@@ -214,9 +214,37 @@ class Test_Case_cartesian_2d_vector(unittest.TestCase):
 ### TODO: Add more tests
 
 
-    # def test_are_parallel(self):
-    # 
-    #     fail_msg = "Problem with method 'are_parallel'"
+    def test_are_parallel(self):
+
+        fail_msg = "Problem with method 'are_parallel'"
+        u = self.V2D(0.0, 0.0)
+        w = self.V2D(0.0, 0.0)
+        self.assertTrue(self.V2D.are_parallel(u, w), msg=fail_msg)
+        u = self.V2D(-3.0, 4.0)
+        w = self.V2D(0.0, 0.0)
+        self.assertTrue(u.are_parallel(w), msg=fail_msg)
+        u = self.V2D(0.0, 0.0)
+        w = self.V2D(-1.0, -1.5)
+        self.assertTrue(u.are_parallel(w), msg=fail_msg)
+        u = self.V2D(-6, 8)
+        w = self.V2D(-3.0, 4.0)
+        self.assertTrue(u.are_parallel(w), msg=fail_msg)
+        u = self.V2D(1.5, -2.0)
+        w = self.V2D(-3.0, 4.0)
+        self.assertTrue(u.are_parallel(w), msg=fail_msg)
+        u = self.V2D(1.0, 0.0)
+        w = self.V2D(0.0, 1.0)
+        self.assertFalse(u.are_parallel(w), msg=fail_msg)
+        u = self.V2D(-3.0, 4.0)
+        w = self.V2D(-3.0, -4.0)
+        self.assertFalse(u.are_parallel(w), msg=fail_msg)
+        u = self.V2D(-2.0, 2.5)
+        w = self.V2D(2.5, -2.0)
+        self.assertFalse(u.are_parallel(w), msg=fail_msg)
+        u = self.V2D(2.5, -2.0)
+        w = self.V2D(-4.0, -5.0)
+        self.assertFalse(u.are_parallel(w), msg=fail_msg)
+### TODO: Add more tests
 
 
     def test_reorient(self):
