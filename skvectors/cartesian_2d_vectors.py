@@ -69,14 +69,14 @@ def create_class_Cartesian_2D_Vector(name, component_names, *, brackets='<>', se
             """A vector created from polar coordinates"""
 
             cunit = cls._cunit
-            azimuth = cunit*azimuth
+            azimuth = cunit * azimuth
             cos_a = cls.component_cos(azimuth)
             sin_a = cls.component_sin(azimuth)
-            radius = cunit*radius
+            radius = cunit * radius
             vector = \
                 cls(
-                    radius*cos_a,
-                    radius*sin_a,
+                    radius * cos_a,
+                    radius * sin_a,
                     _internal = True
                 )
 
@@ -108,7 +108,7 @@ def create_class_Cartesian_2D_Vector(name, component_names, *, brackets='<>', se
             lo = other.length()
             pd = self.perp_dot(other)
             try:
-                sine = pd/(ls*lo)
+                sine = pd / (ls * lo)
             except ZeroDivisionError as err:
                 msg = "One (or both) of the vectors is a zero vector"
                 raise ZeroDivisionError(msg) from err
@@ -136,7 +136,7 @@ def create_class_Cartesian_2D_Vector(name, component_names, *, brackets='<>', se
             """The vector rotated by an angle in radiands"""
 
             cunit = self._cunit
-            angle = cunit*angle
+            angle = cunit * angle
             cos = self.component_cos(angle)
             sin = self.component_sin(angle)
             vector = \
