@@ -62,29 +62,29 @@ def create_class_Vector(name, component_names, *, brackets='<>', sep=', ', cnull
         verify_equal_args(cunit, cunit + cnull)
         verify_equal_args(cnull, +cunit - cunit)
         verify_equal_args(cnull, -cunit + cunit)
-        verify_equal_args(cnull, cnull*cnull)
-        verify_equal_args(cnull, cnull*cunit)
-        verify_equal_args(cnull, cunit*cnull)
-        verify_equal_args(cunit, cunit*cunit)
-        verify_equal_args(cnull, cnull/cunit)
-        verify_equal_args(cunit, cunit/cunit)
+        verify_equal_args(cnull, cnull * cnull)
+        verify_equal_args(cnull, cnull * cunit)
+        verify_equal_args(cnull, cunit * cnull)
+        verify_equal_args(cunit, cunit * cunit)
+        verify_equal_args(cnull, cnull / cunit)
+        verify_equal_args(cunit, cunit / cunit)
         verify_equal_args(cunit, cnull**cnull)  # ?
         verify_equal_args(cnull, cnull**cunit)
         verify_equal_args(cunit, cunit**cnull)
         verify_equal_args(cunit, cunit**cunit)
         # verify_equal_args(cunit, cunit**-cunit)  # Problem with Pandas
-        verify_equal_args(cnull, cnull*0)
-        verify_equal_args(cnull, 0*cnull)
-        verify_equal_args(cnull, cnull*1)
-        verify_equal_args(cnull, 1*cnull)
-        verify_equal_args(cnull, cunit*0)
-        verify_equal_args(cnull, 0*cunit)
-        verify_equal_args(cunit, cunit*1)
-        verify_equal_args(cunit, 1*cunit)
-        verify_equal_args(cnull, cnull/1)
-        verify_equal_args(cnull, 0/cunit)
-        verify_equal_args(cunit, cunit/1)
-        verify_equal_args(cunit, 1/cunit)
+        verify_equal_args(cnull, cnull * 0)
+        verify_equal_args(cnull, 0 * cnull)
+        verify_equal_args(cnull, cnull * 1)
+        verify_equal_args(cnull, 1 * cnull)
+        verify_equal_args(cnull, cunit * 0)
+        verify_equal_args(cnull, 0 * cunit)
+        verify_equal_args(cunit, cunit * 1)
+        verify_equal_args(cunit, 1 * cunit)
+        verify_equal_args(cnull, cnull / 1)
+        verify_equal_args(cnull, 0 / cunit)
+        verify_equal_args(cunit, cunit / 1)
+        verify_equal_args(cunit, 1 / cunit)
         verify_equal_args(cunit, cnull**0)  # ?
         verify_equal_args(cnull, cnull**1)
         verify_equal_args(cunit, cunit**0)
@@ -121,7 +121,7 @@ def create_class_Vector(name, component_names, *, brackets='<>', sep=', ', cnull
     def make_zero_vector_method(cls):
 
         cnull = cls._cnull
-        cvalues = [ cnull ]*cls._dimensions
+        cvalues = [ cnull ] * cls._dimensions
 
 
         def zero(cls):
@@ -136,7 +136,7 @@ def create_class_Vector(name, component_names, *, brackets='<>', sep=', ', cnull
     def make_one_vector_method(cls):
 
         cunit = cls._cunit
-        cvalues = [ cunit ]*cls._dimensions
+        cvalues = [ cunit ] * cls._dimensions
 
 
         def one(cls):
@@ -305,7 +305,7 @@ def create_class_Vector(name, component_names, *, brackets='<>', sep=', ', cnull
             cunit = cls._cunit
             cvalues = \
                 (
-                    cunit*value
+                    cunit * value
                     for _ in range(cls._dimensions)
                 )
             vector = cls(*cvalues, _internal=True)
@@ -344,13 +344,13 @@ def create_class_Vector(name, component_names, *, brackets='<>', sep=', ', cnull
                 if len(named_cvalues) > 0:
                     self._cvalues = \
 	                    [
-	                        cunit*named_cvalues[cns]
+	                        cunit * named_cvalues[cns]
 	                        for cns in self._cnames
 	                    ]
                 else:
                     self._cvalues = \
                         [
-                            cunit*cv
+                            cunit * cv
                             for cv in cvalues
                         ]
 
@@ -374,11 +374,11 @@ def create_class_Vector(name, component_names, *, brackets='<>', sep=', ', cnull
 
             cunit = self._cunit
             if isinstance(index, int):
-                cvalues = cunit*values
+                cvalues = cunit * values
             elif isinstance(index, slice):
                 cvalues = \
                     [
-                        cunit*cv
+                        cunit * cv
                         for cv in values
                     ]
                 indices = range(*index.indices(self._dimensions))
