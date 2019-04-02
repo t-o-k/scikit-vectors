@@ -147,9 +147,43 @@ class Test_Case_cartesian_2d_vector(unittest.TestCase):
         self.assertEqual(s, -5, msg=fail_msg)
 
 
-    # def test_sin(self):
-    # 
-    #     fail_msg = "Problem with method 'sin'"
+    def test_sin(self):
+
+        fail_msg = "Problem with method 'sin'"
+        u = self.V2D(2, 0)
+        w = self.V2D(3, 0)
+        r = self.V2D.sin(u, w)
+        self.assertEqual(r, 0.0, msg=fail_msg)
+        u = self.V2D(0, -3)
+        w = self.V2D(0, 2)
+        r = self.V2D.sin(u, w)
+        self.assertEqual(r, 0, msg=fail_msg)
+        u = self.V2D(-3, -4)
+        w = self.V2D(8, -6)
+        r = u.sin(w)
+        self.assertAlmostEqual(r, 1, msg=fail_msg)
+        u = self.V2D(0.0, 3.0)
+        r = u.sin(-3.0)
+        self.assertAlmostEqual(r, math.sqrt(2.0)/2.0, msg=fail_msg)
+        u = self.V2D(2.0, 0.0)
+        w = self.V2D(3.0, -3.0)
+        r = u.sin(w)
+        self.assertAlmostEqual(r, -math.sqrt(2.0)/2.0, msg=fail_msg)
+        u = self.V2D(2.0, 0.0)
+        w = self.V2D(-1.0, -math.sqrt(3.0))
+        r = u.sin(w)
+        self.assertAlmostEqual(r, -math.sqrt(3.0)/2.0, msg=fail_msg)
+        u = self.V2D(0, 0)
+        w = self.V2D(0, 0)
+        with self.assertRaises(ZeroDivisionError, msg=fail_msg):
+            r = u.sin(w)
+        u = self.V2D(0, 0)
+        w = self.V2D(-3, 4)
+        with self.assertRaises(ZeroDivisionError, msg=fail_msg):
+            r = u.sin(w)
+        u = self.V2D(-1, 2)
+        with self.assertRaises(ZeroDivisionError, msg=fail_msg):
+            r = u.sin(0)
 
 
     def test_angle(self):
