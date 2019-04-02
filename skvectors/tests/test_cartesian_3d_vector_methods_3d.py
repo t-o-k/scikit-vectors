@@ -731,7 +731,8 @@ class Test_Case_tolerant_cartesian_3d_vector(Test_Case_cartesian_3d_vector):
 
     create_vector_class = staticmethod(skvectors.create_class_Tolerant_Cartesian_3D_Vector)
 
-### TODO: Add test methods
+
+    # def test_are_parallel(self):
 
 
 if __name__ == "__main__":
