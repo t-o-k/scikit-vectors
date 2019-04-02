@@ -39,7 +39,7 @@ def create_class_Cartesian_3D_Vector(name, component_names, *, brackets='<>', se
 
             cnull = self._cnull
             cunit = self._cunit
-            angle = cunit*angle
+            angle = cunit * angle
             cos = self.component_cos(angle)
             sin = self.component_sin(angle)
             vector = \
@@ -67,7 +67,7 @@ def create_class_Cartesian_3D_Vector(name, component_names, *, brackets='<>', se
 
             cnull = self._cnull
             cunit = self._cunit
-            angle = cunit*angle
+            angle = cunit * angle
             cos = self.component_cos(angle)
             sin = self.component_sin(angle)
             vector = \
@@ -95,7 +95,7 @@ def create_class_Cartesian_3D_Vector(name, component_names, *, brackets='<>', se
 
             cnull = self._cnull
             cunit = self._cunit
-            angle = cunit*angle
+            angle = cunit * angle
             cos = self.component_cos(angle)
             sin = self.component_sin(angle)
             vector = \
@@ -155,18 +155,18 @@ def create_class_Cartesian_3D_Vector(name, component_names, *, brackets='<>', se
 
 ### Add check for negative radius
             cunit = cls._cunit
-            azimuth = cunit*azimuth
+            azimuth = cunit * azimuth
             cos_a = cls.component_cos(azimuth)
             sin_a = cls.component_sin(azimuth)
-            inclination = cunit*inclination
+            inclination = cunit * inclination
             cos_i = cls.component_cos(inclination)
             sin_i = cls.component_sin(inclination)
-            radius = cunit*radius
+            radius = cunit * radius
             vector = \
                 cls(
-                    radius*cos_i*cos_a,
-                    radius*cos_i*sin_a,
-                    radius*sin_i,
+                    radius * cos_i * cos_a,
+                    radius * cos_i * sin_a,
+                    radius * sin_i,
                     _internal = True
                 )
 
@@ -182,9 +182,9 @@ def create_class_Cartesian_3D_Vector(name, component_names, *, brackets='<>', se
             vector = \
                 self._vector(
                     (
-                        cvs1*cvo2 - cvs2*cvo1,
-                        cvs2*cvo0 - cvs0*cvo2,
-                        cvs0*cvo1 - cvs1*cvo0
+                        cvs1 * cvo2 - cvs2 * cvo1,
+                        cvs2 * cvo0 - cvs0 * cvo2,
+                        cvs0 * cvo1 - cvs1 * cvo0
                     )
                 )
 
@@ -217,7 +217,7 @@ def create_class_Cartesian_3D_Vector(name, component_names, *, brackets='<>', se
             lo = other.length()
             lcr = self.cross(other).length()
             try:
-                sine = lcr/(ls*lo)
+                sine = lcr / (ls * lo)
             except ZeroDivisionError as err:
                 msg = "One (or both) of the vectors is a zero vector"
                 raise ZeroDivisionError(msg) from err
@@ -235,7 +235,7 @@ def create_class_Cartesian_3D_Vector(name, component_names, *, brackets='<>', se
             la2 = la1**2
             vcr1 = self.cross(axis)
             vcr2 = vcr1.cross(axis)
-            vector = self + vcr2/la2*(cunit - cos) - vcr1/la1*sin
+            vector = self + vcr2 / la2 * (cunit - cos) - vcr1 / la1 * sin
 
             return vector
 
@@ -245,7 +245,7 @@ def create_class_Cartesian_3D_Vector(name, component_names, *, brackets='<>', se
             """A vector rotated around another by an angle in radians"""
 
             cunit = self._cunit
-            angle = cunit*angle
+            angle = cunit * angle
             cos = self.component_cos(angle)
             sin = self.component_sin(angle)
             try:
@@ -340,7 +340,7 @@ def create_class_Cartesian_3D_Vector(name, component_names, *, brackets='<>', se
             """TODO"""
 
             cvs0, cvs1, cvs2 = self._cvalues
-            r = (cvs0**(cunit*2) + cvs1**(cunit*2))**(cunit/2)
+            r = (cvs0**(cunit * 2) + cvs1**(cunit * 2))**(cunit / 2)
             angle = self.component_atan2(cvs2, r)
 
             return angle
