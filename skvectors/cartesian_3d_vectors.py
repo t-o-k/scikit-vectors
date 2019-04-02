@@ -282,7 +282,7 @@ def create_class_Cartesian_3D_Vector(name, component_names, *, brackets='<>', se
                     msg = "The direction vectors are pointing in opposite directions"
                     raise ZeroDivisionError(msg)
                 assert self._equal_cunit(dot)
-                vector = self
+                vector = self.copy()
 
             return vector
 
