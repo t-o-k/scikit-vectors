@@ -289,7 +289,11 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
 
         @hf.ensure_other_is_vector
         def angle(self, other):
-            """The smallest angle in radians (from cnull to +cunit*pi) between two vectors"""
+            """
+            The smallest angle in radians (from cnull to +cunit*pi) between two vectors
+            Kahan, W. (2016). Computing Cross-Products and Rotations in 2- and 3-Dimensional Euclidean Spaces
+            https://people.eecs.berkeley.edu/~wkahan/MathH110/Cross.pdf
+            """
 
             ls = self.length()
             lo = other.length()
