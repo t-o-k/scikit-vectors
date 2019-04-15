@@ -196,10 +196,10 @@ def create_class_Fundamental_Vector(name, component_names, *, brackets='<>', sep
                 self._check_arguments(cvalues, named_cvalues)
                 if len(named_cvalues) > 0:
                     self._cvalues = \
-	                [
-	                    copy(named_cvalues[cns])
-	                    for cns in self._cnames
-	                ]
+                        [
+                            copy(named_cvalues[cns])
+                            for cns in self._cnames
+                        ]
                 else:
                     self._cvalues = \
                         [
