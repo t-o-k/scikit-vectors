@@ -31,7 +31,7 @@ def make_Cartesian_Vector_Tolerant(*, cartesian_vector_class, name, functions, a
 
         hf.setup_vector_class(cls=cls, name=name, functions=functions)
         cunit = cls._cunit
-        cls.abs_tol = cunit*abs_tol
+        cls.abs_tol = cunit * abs_tol
         cls.rel_tol = rel_tol
         cls.cround = property(cls.round_components)
 
@@ -64,7 +64,7 @@ def make_Cartesian_Vector_Tolerant(*, cartesian_vector_class, name, functions, a
         @classmethod
         def _epsilon_1(cls, length):
 
-            eps = cls.component_max(cls.abs_tol, length*cls.rel_tol)
+            eps = cls.component_max(cls.abs_tol, length * cls.rel_tol)
 
             return eps
 
@@ -73,7 +73,7 @@ def make_Cartesian_Vector_Tolerant(*, cartesian_vector_class, name, functions, a
         def _epsilon_2(cls, length_0, length_1):
 
             max_length = cls.component_max(length_0, length_1)
-            eps = cls.component_max(cls.abs_tol, max_length*cls.rel_tol)
+            eps = cls.component_max(cls.abs_tol, max_length * cls.rel_tol)
 
             return eps
 
@@ -82,7 +82,7 @@ def make_Cartesian_Vector_Tolerant(*, cartesian_vector_class, name, functions, a
         def _epsilon_n(cls, lengths):
 
             max_length = cls.component_max(*lengths)
-            eps = cls.component_max(cls.abs_tol, max_length*cls.rel_tol)
+            eps = cls.component_max(cls.abs_tol, max_length * cls.rel_tol)
 
             return eps
 
@@ -126,7 +126,7 @@ def make_Cartesian_Vector_Tolerant(*, cartesian_vector_class, name, functions, a
 
             cnull = cls._cnull
             cunit = cls._cunit
-            value = cunit*value
+            value = cunit * value
             tol = cls.abs_tol
             result = cls.component_and((cnull - tol) <= value, value <= (cnull + tol))
 
@@ -137,8 +137,8 @@ def make_Cartesian_Vector_Tolerant(*, cartesian_vector_class, name, functions, a
         def _equal_cunit(cls, value):
 
             cunit = cls._cunit
-            value = cunit*value
-            tol = cunit*cls.rel_tol
+            value = cunit * value
+            tol = cunit * cls.rel_tol
             result = cls.component_and((cunit - tol) <= value, value <= (cunit + tol))
 
             return result
@@ -243,8 +243,8 @@ def make_Cartesian_Vector_Tolerant(*, cartesian_vector_class, name, functions, a
         def _round(cls, value, p):
 
             cunit = cls._cunit
-            d = (cunit*10)**p
-            rounded_value = cls.component_trunc(value*d + cls.component_copysign(cunit/2, value))/d
+            d = (cunit * 10)**p
+            rounded_value = cls.component_trunc(value * d + cls.component_copysign(cunit / 2, value)) / d
 
             return rounded_value
 
@@ -254,7 +254,7 @@ def make_Cartesian_Vector_Tolerant(*, cartesian_vector_class, name, functions, a
         def _round_cvalue(cls, cvalue, p):
 
             cunit = cls._cunit
-            rounded_cvalue = cunit*cls._round(cvalue/cunit, p)
+            rounded_cvalue = cunit * cls._round(cvalue / cunit, p)
 
             return rounded_cvalue
 
