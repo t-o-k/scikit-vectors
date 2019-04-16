@@ -210,7 +210,7 @@ def create_class_Cartesian_3D_Vector(name, component_names, *, brackets='<>', se
 
 
         @hf.ensure_other_is_vector
-        def sin(self, other):
+        def sin(self, other, clip=False):
             """The sine of the angle between two vectors (from cnull to +cunit)"""
 
             ls = self.length()
@@ -221,9 +221,10 @@ def create_class_Cartesian_3D_Vector(name, component_names, *, brackets='<>', se
             except ZeroDivisionError as err:
                 msg = "One (or both) of the vectors is a zero vector"
                 raise ZeroDivisionError(msg) from err
-            cnull = self._cnull
-            cunit = self._cunit
-            sine = self.clip(sine, cnull, cunit)
+            if clip:
+                cnull = self._cnull
+                cunit = self._cunit
+                sine = self.clip(sine, cnull, cunit)
 
             return sine
 

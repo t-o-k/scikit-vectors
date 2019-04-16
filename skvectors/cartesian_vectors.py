@@ -307,7 +307,7 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
 
 
         @hf.ensure_other_is_vector
-        def cos(self, other):
+        def cos(self, other, clip=False):
             """The cosine of the angle between two vectors (from -cunit to +cunit)"""
 
             ls = self.length()
@@ -318,8 +318,9 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
             except ZeroDivisionError as err:
                 msg = "One (or both) of the vectors is a zero vector"
                 raise ZeroDivisionError(msg) from err
-            cunit = self._cunit
-            cosine = self.clip(cosine, -cunit, cunit)
+            if clip:
+                cunit = self._cunit
+                cosine = self.clip(cosine, -cunit, cunit)
 
             return cosine
 
