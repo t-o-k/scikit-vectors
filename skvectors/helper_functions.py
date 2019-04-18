@@ -64,12 +64,14 @@ def setup_internal_functions(cls, functions):
             {
                 'and': and_,
                 'or': or_,
+                'not': operator.not_, # ?
+                'eq': operator.eq,
+                'ne': operator.ne,
                 'all': all,
                 'any': any,
                 'min': min,
                 'max': max,
                 'abs': abs,
-                'not': operator.not_, # ?
                 'trunc': math.trunc,
                 'floor': math.floor,
                 'ceil': math.ceil,

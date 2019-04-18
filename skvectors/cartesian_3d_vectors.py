@@ -134,6 +134,8 @@ def create_class_Cartesian_3D_Vector(name, component_names, *, brackets='<>', se
 
         _internal_functions = \
             [
+                # 'eq',
+                # 'ne',
                 # 'and',
                 # 'or',
                 # 'all',

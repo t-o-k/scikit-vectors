@@ -39,11 +39,13 @@ def create_class_Vector(name, component_names, *, brackets='<>', sep=', ', cnull
     def verify_equal_args(arg0, arg1):
 
         if functions is None:
+            op_eq = operator.eq
             op_all = all
         else:
+            op_eq = functions.get('eq', operator.eq)
             op_all = functions.get('all', all)
-        verify_equal(arg0 == arg1, op_all)
-        verify_equal(arg1 == arg0, op_all)
+        verify_equal(op_eq(arg0, arg1), op_all)
+        verify_equal(op_eq(arg1, arg0), op_all)
 
 
     def verify_units(cnull, cunit):
@@ -206,8 +208,8 @@ def create_class_Vector(name, component_names, *, brackets='<>', sep=', ', cnull
         hf.setup_vector_class(cls=cls, name=name, functions=functions)
         cls._cnull = cnull
         cls._cunit = cunit
-        cls._true = cnull == cnull
-        cls._false = cnull != cnull
+        cls._true = cls.component_eq(cnull, cnull)
+        cls._false = cls.component_ne(cnull, cnull)
         make_zero_vector_method(cls)
         make_one_vector_method(cls)
         setup_vector_bases(cls)
@@ -231,6 +233,8 @@ def create_class_Vector(name, component_names, *, brackets='<>', sep=', ', cnull
 
         _internal_functions = \
             [
+                'eq',
+                'ne',
                 'and',
                 'all',
                 'floor',
@@ -361,7 +365,7 @@ def create_class_Vector(name, component_names, *, brackets='<>', sep=', ', cnull
             cnull = self._cnull
             are_zeros = \
                 (
-                    cvs == cnull
+                    self.component_eq(cvs, cnull)
                     for cvs in self._cvalues
                 )
             is_zero = reduce(self.component_and, are_zeros)

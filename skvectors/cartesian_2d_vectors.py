@@ -49,6 +49,8 @@ def create_class_Cartesian_2D_Vector(name, component_names, *, brackets='<>', se
 
         _internal_functions = \
             [
+                # 'eq',
+                # 'ne',
                 # 'and',
                 # 'or',
                 # 'all',

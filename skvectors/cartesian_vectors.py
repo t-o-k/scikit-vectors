@@ -48,6 +48,8 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
 
         _internal_functions = \
             [
+                # 'eq',
+                # 'ne',
                 # 'and',
                 'or',
                 # 'all',
@@ -80,7 +82,18 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
             cnull = cls._cnull
             cunit = cls._cunit
             value = cunit * value
-            result = value == cnull
+            result = cls.component_eq(value, cnull)
+
+            return result
+
+
+        @classmethod
+        def _not_equal_cnull(cls, value):
+
+            cnull = cls._cnull
+            cunit = cls._cunit
+            value = cunit * value
+            result = cls.component_ne(value, cnull)
 
             return result
 
@@ -90,7 +103,17 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
 
             cunit = cls._cunit
             value = cunit * value
-            result = value == cunit
+            result = cls.component_eq(value, cunit)
+
+            return result
+
+
+        @classmethod
+        def _not_equal_cunit(cls, value):
+
+            cunit = cls._cunit
+            value = cunit * value
+            result = cls.component_ne(value, cunit)
 
             return result
 
@@ -120,8 +143,8 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
             based on their distance from each other
             """
 
-            cnull = self._cnull
-            equal = self.distance(other) == cnull
+            distance_between = self.distance(other)
+            equal = self._equal_cnull(distance_between)
 
             return equal
 
@@ -133,8 +156,8 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
             based on their distance from each other
             """
 
-            cnull = self._cnull
-            not_equal = self.distance(other) != cnull
+            distance_between = self.distance(other)
+            not_equal = self._not_equal_cnull(distance_between)
 
             return not_equal
 
@@ -158,7 +181,7 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
 
             ls = self.length()
             lo = other.length()
-            equal_vector_lengths = ls == lo
+            equal_vector_lengths = self.component_eq(ls, lo)
 
             return equal_vector_lengths
 
