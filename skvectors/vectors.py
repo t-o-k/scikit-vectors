@@ -236,6 +236,7 @@ def create_class_Vector(name, component_names, *, brackets='<>', sep=', ', cnull
                 'eq',
                 'ne',
                 'and',
+                'or',
                 'all',
                 'floor',
                 'ceil',

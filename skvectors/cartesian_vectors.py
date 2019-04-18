@@ -51,7 +51,7 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
                 # 'eq',
                 # 'ne',
                 # 'and',
-                'or',
+                # 'or',
                 # 'all',
                 'min',
                 'max',
