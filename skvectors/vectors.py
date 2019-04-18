@@ -373,6 +373,32 @@ def create_class_Vector(name, component_names, *, brackets='<>', sep=', ', cnull
             return is_zero
 
 
+        def contains(self, value):
+            """Check if a value is equal to any of the vector component values"""
+
+            are_present = \
+                (
+                    self.component_eq(value, cvs)
+                    for cvs in self._cvalues
+                )
+            does_contain = reduce(self.component_or, are_present)
+
+            return does_contain
+
+
+        def contains_not(self, value):
+            """Check if a value is not equal to any of the vector component values"""
+
+            are_not_present = \
+                (
+                    self.component_ne(value, cvs)
+                    for cvs in self._cvalues
+                )
+            does_not_contain = reduce(self.component_and, are_not_present)
+
+            return does_not_contain
+
+
         def __setitem__(self, index, values):
             """Change vector component values by indexing"""
 
