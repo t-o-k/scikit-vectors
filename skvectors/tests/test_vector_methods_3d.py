@@ -116,6 +116,52 @@ class Test_Case_vector(unittest.TestCase):
         self.assertNotEqual(id_u_before, id_v_after, msg=fail_msg)
 
 
+    def test_contains(self):
+
+        fail_msg = "Problem with method 'contains'"
+        v = self.V3D(0, -1, 2)
+        b = self.V3D.contains(v, -1)
+        self.assertTrue(b, msg=fail_msg)
+        v = self.V3D(0, -1, 2)
+        b = self.V3D.contains(v, 1)
+        self.assertFalse(b, msg=fail_msg)
+        v = self.V3D(0, -1, 2)
+        b = v.contains(2.0)
+        self.assertTrue(b, msg=fail_msg)
+        v = self.V3D(0, -1, 2)
+        b = v.contains(0.0)
+        self.assertTrue(b, msg=fail_msg)
+        v = self.V3D(0, -1, 2)
+        b = v.contains(-2)
+        self.assertFalse(b, msg=fail_msg)
+        v = self.V3D(0, -1, 2)
+        b = v.contains(0.1)
+        self.assertFalse(b, msg=fail_msg)
+
+
+    def test_contains_not(self):
+
+        fail_msg = "Problem with method 'contains_not'"
+        v = self.V3D(0, -1, 2)
+        b = self.V3D.contains_not(v, 1)
+        self.assertTrue(b, msg=fail_msg)
+        v = self.V3D(0, -1, 2)
+        b = self.V3D.contains_not(v, -1)
+        self.assertFalse(b, msg=fail_msg)
+        v = self.V3D(0, -1, 2)
+        b = v.contains_not(-2)
+        self.assertTrue(b, msg=fail_msg)
+        v = self.V3D(0, -1, 2)
+        b = v.contains_not(0.1)
+        self.assertTrue(b, msg=fail_msg)
+        v = self.V3D(0, -1, 2)
+        b = v.contains_not(2.0)
+        self.assertFalse(b, msg=fail_msg)
+        v = self.V3D(0, -1, 2)
+        b = v.contains_not(0.0)
+        self.assertFalse(b, msg=fail_msg)
+
+
     def test_sum_of_vectors(self):
 
         fail_msg = "Problem with class method 'sum_of_vectors'"
