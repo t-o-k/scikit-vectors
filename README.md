@@ -32,6 +32,10 @@ pip install scikit-vectors
 
 ## Examples
 
+In addition to the short examples below, there are some more elaborate ones here:
+
+https://github.com/t-o-k/scikit-vectors_examples
+
 ### Simple examples
 
 ```python
@@ -121,17 +125,18 @@ SV(first=0.0, second=0.167, third=0.333, fourth=0.5, fifth=0.667, sixth=0.833)
 ```python
 >>> from skvectors import create_class_Cartesian_3D_Vector
 >>> import numpy as np
->>> 
 >>> NP3 = \
 ...     create_class_Cartesian_3D_Vector(
 ...         name = 'NP3',
 ...         component_names = [ chr(0x03b1)*2, chr(0x03b2)*2, chr(0x03b3)*2 ],
 ...         brackets = [ chr(0x2770)*2 + ' ', ' ' + chr(0x2771)*2 ],
 ...         sep = ', ',
-...         cnull = np.array([ 0., 0., 0., 0., 0. ]),
-...         cunit = np.array([ 1., 1., 1., 1., 1. ]),
+...         cnull = np.array([ 0., 0., 0., 0. ]),
+...         cunit = np.array([ 1., 1., 1., 1. ]),
 ...         functions = \
 ...             {
+...                 'eq': np.equal,
+...                 'ne': np.not_equal,
 ...                 'not': np.logical_not,
 ...                 'and': np.logical_and,
 ...                 'or': np.logical_or,
@@ -152,31 +157,36 @@ SV(first=0.0, second=0.167, third=0.333, fourth=0.5, fifth=0.667, sixth=0.833)
 ...     )
 >>> NP3.component_names()
 ['αα', 'ββ', 'γγ']
+>>> u = \
+...     NP3(
+...         np.random.randint(0, 100, size=4),
+...         np.random.randint(0, 100, size=4),
+...         np.random.randint(0, 100, size=4)
+...     )
+>>> u
+NP3(αα=array([ 79.,  65.,  93.,  68.]), ββ=array([ 16.,  40.,  58.,  91.]), γγ=array([ 17.,  22.,  26.,  69.]))
 >>> v = \
 ...     NP3(
-...         np.random.randint(0, 100, size=5),
-...         np.random.randint(0, 100, size=5),
-...         np.random.randint(0, 100, size=5)
+...         np.array([ -3,  5, -1,  2 ]),
+...         np.array([  0, 12,  0, -1 ]),
+...         np.array([  4,  0,  0,  2 ])
 ...     )
->>> v
-NP3(αα=array([30., 43., 71., 18., 61.]), ββ=array([98., 91., 76., 10., 92.]), γγ=array([23., 87., 76., 24., 68.]))
 >>> str(v)
-'❰❰ [30. 43. 71. 18. 61.], [98. 91. 76. 10. 92.], [23. 87. 76. 24. 68.] ❱❱'
->>> u = NP3(1, -1, 0)
->>> u
-NP3(αα=array([1., 1., 1., 1., 1.]), ββ=array([-1., -1., -1., -1., -1.]), γγ=array([0., 0., 0., 0., 0.]))
->>> v.dot(u)
-array([-68., -48.,  -5.,   8., -31.])
+'❰❰ [-3.  5. -1.  2.], [  0.  12.   0.  -1.], [ 4.  0.  0.  2.] ❱❱'
+>>> 
+>>> v.contains(np.array([ 4.0, 2.0, -1.0, 3.0 ]))
+array([ True, False,  True, False], dtype=bool)
+>>> v.length()
+array([  5.,  13.,   1.,   3.])
+>>> w = NP3(1, -1, 0)
+>>> w
+NP3(αα=array([ 1.,  1.,  1.,  1.]), ββ=array([-1., -1., -1., -1.]), γγ=array([ 0.,  0.,  0.,  0.]))
+>>> v.reorient(u, w)
+NP3(αα=array([ -1.38901868,  12.8631335 ,  -0.24154379,  -0.91051319]), ββ=array([ 1.5122956 , -1.46965243,  0.92602976, -2.85765228]), γγ=array([ 4.55890219, -1.1746992 ,  0.29004394, -0.06920388]))
 >>> v.axis_rotate(NP3(1, -2, 1), np.pi/4)
-NP3(αα=array([-27.33663766, -48.63172697, -15.85742691,  -2.94129394,
-       -25.36927154]), ββ=array([85.27843393, 56.72182696, 52.78489506,  3.1911334 , 68.40280694]), γγ=array([ 54.89350552, 110.07538089, 116.42721703,  31.32356074,
-       107.17488542]))
+NP3(αα=array([-4.38190588, -0.8560629 , -0.75592232,  0.84108138]), ββ=array([ -2.11835702,  11.78364743,  -0.19104406,  -1.29289322]), γγ=array([ 1.14519185,  5.42335777, -0.62616581,  2.57313218]))
 >>> 
 ```
-
-Also have a look at the examples here:
-
-https://github.com/t-o-k/scikit-vectors_examples
 
 ## Running the tests
 
