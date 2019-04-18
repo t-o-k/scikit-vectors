@@ -203,7 +203,7 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
 
             ls = self.length()
             lo = other.length()
-            is_longer = lo < ls
+            is_longer = ls > lo
 
             return is_longer
 
