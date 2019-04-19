@@ -1,8 +1,10 @@
 """
-Copyright (c) 2017 Tor Olav Kristensen, http://subcube.com
+Copyright (c) 2017, 2019 Tor Olav Kristensen, http://subcube.com
 https://github.com/t-o-k/scikit-vectors
 Use of this source code is governed by a BSD-license that can be found in the LICENSE file.
 """
+
+from functools import reduce
 
 import skvectors.helper_functions as hf
 
@@ -81,7 +83,7 @@ def make_Cartesian_Vector_Tolerant(*, cartesian_vector_class, name, functions, a
         @classmethod
         def _epsilon_n(cls, lengths):
 
-            max_length = cls.component_max(*lengths)
+            max_length = reduce(cls.component_max, lengths, 0)
             eps = cls.component_max(cls.abs_tol, max_length * cls.rel_tol)
 
             return eps
