@@ -18,7 +18,7 @@ def ensure_other_is_vector(method):
     def wrapper(self, other, *args, **kwargs):
 
         if not self.is_vector(other):
-            other = self.repeat_cvalue(other)
+            other = self.fill(other)
 
         return method(self, other, *args, **kwargs)
 
@@ -33,9 +33,9 @@ def ensure_others_are_vectors(method):
     def wrapper(self, other, other_, *args, **kwargs):
 
         if not self.is_vector(other):
-            other = self.repeat_cvalue(other)
+            other = self.fill(other)
         if not self.is_vector(other_):
-            other_ = self.repeat_cvalue(other_)
+            other_ = self.fill(other_)
 
         return method(self, other, other_, *args, **kwargs)
 

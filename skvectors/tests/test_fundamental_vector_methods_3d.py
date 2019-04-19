@@ -1,5 +1,5 @@
 """
-Copyright (c) 2017 Tor Olav Kristensen, http://subcube.com
+Copyright (c) 2017, 2019 Tor Olav Kristensen, http://subcube.com
 https://github.com/t-o-k/scikit-vectors
 Use of this source code is governed by a BSD-license that can be found in the LICENSE file.
 """
@@ -145,19 +145,19 @@ class Test_Case_fundamental_vector(unittest.TestCase):
         self.assertEqual(v.z, -5.0, msg=fail_msg)
 
 
-    def test_repeat_cvalue(self):
+    def test_fill(self):
 
-        fail_msg = "Problem with class method 'repeat_cvalue'"
-        v = self.V3D.repeat_cvalue(-1)
+        fail_msg = "Problem with class method 'fill'"
+        v = self.V3D.fill(-1)
         l = v.component_values()
         self.assertListEqual(l, [ -1, -1, -1 ], msg=fail_msg)
         u = self.V3D(0, -1, 2)
-        v = u.repeat_cvalue(3.5)
+        v = u.fill(3.5)
         l = v.component_values()
         self.assertListEqual(l, [ 3.5, 3.5, 3.5 ], msg=fail_msg)
         u = self.V3D(0, -1, 2)
         id_u_before = id(u)
-        v = u.repeat_cvalue(1)
+        v = u.fill(1)
         id_v_after = id(v)
         self.assertNotEqual(id_u_before, id_v_after, msg=fail_msg)
 

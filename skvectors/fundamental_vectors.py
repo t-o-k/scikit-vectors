@@ -162,7 +162,7 @@ def create_class_Fundamental_Vector(name, component_names, *, brackets='<>', sep
 
 
         @classmethod
-        def repeat_cvalue(cls, value):
+        def fill(cls, value):
             """A vector with all component values set to value"""
 
             cvalues = \
@@ -180,7 +180,7 @@ def create_class_Fundamental_Vector(name, component_names, *, brackets='<>', sep
 
             vectors = \
                 (
-                    v if cls.is_vector(v) else cls.repeat_cvalue(v)
+                    v if cls.is_vector(v) else cls.fill(v)
                     for v in vectors
                 )
 

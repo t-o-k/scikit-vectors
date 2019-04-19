@@ -304,7 +304,7 @@ def create_class_Vector(name, component_names, *, brackets='<>', sep=', ', cnull
 
 
         @classmethod
-        def repeat_cvalue(cls, value):
+        def fill(cls, value):
             """A vector with all component values set to value"""
 
             cunit = cls._cunit
