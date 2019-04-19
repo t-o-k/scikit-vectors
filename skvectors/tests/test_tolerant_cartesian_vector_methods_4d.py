@@ -38,9 +38,38 @@ class Test_Case_tolerant_cartesian_vector(unittest.TestCase):
         del cls.V4D
 
 
-    # def test_tolerance_all(self):
-    # 
-    #     fail_msg = "Problem with method 'tolerance_all'"
+    def test_tolerance_all(self):
+
+        fail_msg = "Problem with method 'tolerance_all'"
+        r = self.V4D.tolerance_all([ ])
+        self.assertEqual(r, self.abs_tol, msg=fail_msg)
+        u = self.V4D(0.0, 0.0, 0.0, 0.0)
+        r = self.V4D.tolerance_all([ u ])
+        self.assertEqual(r, self.abs_tol, msg=fail_msg)
+        u = self.V4D(-0.2, 0.4, 0.8, -0.4)
+        r = self.V4D.tolerance_all([ u ])
+        self.assertEqual(r, self.rel_tol, msg=fail_msg)
+        u = self.V4D(0.0, 0.0, 0.0, 0.0)
+        v = self.V4D(0.0, 0.0, 0.0, 0.0)
+        r = self.V4D.tolerance_all([ u, v ])
+        self.assertEqual(r, self.abs_tol, msg=fail_msg)
+        u = self.V4D(-0.2, 0.4, 0.8, -0.4)
+        v = self.V4D(0.0, 0.6, -0.8, 0.0)
+        r = self.V4D.tolerance_all([ u, v ])
+        self.assertEqual(r, self.rel_tol, msg=fail_msg)
+        u = self.V4D(-0.2, 0.4, 0.8, -0.4)
+        v = self.V4D(1.0, -2.0, -4.0, 2.0)
+        r = self.V4D.tolerance_all([ u, v ])
+        self.assertEqual(r, self.rel_tol * 5, msg=fail_msg)
+        u = self.V4D(-1.0, 2.0, -4.0, 2.0)
+        v = self.V4D(0.2, -0.4, 0.8, -0.4)
+        r = self.V4D.tolerance_all([ u, v ])
+        self.assertEqual(r, self.rel_tol * 5, msg=fail_msg)
+        u = self.V4D(-0.2, 0.4, 0.8, -0.4)
+        v = self.V4D(0.0, 0.6, -0.8, 0.0)
+        w = self.V4D(-1.0, 2.0, -4.0, 2.0)
+        r = self.V4D.tolerance_all([ u, v, w ])
+        self.assertEqual(r, self.rel_tol * 5, msg=fail_msg)
 
 
     def test_tolerance_with(self):
