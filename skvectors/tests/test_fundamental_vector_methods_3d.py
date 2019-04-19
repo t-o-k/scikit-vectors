@@ -544,22 +544,25 @@ class Test_Case_fundamental_vector(unittest.TestCase):
 
         fail_msg = "Problem with method '__contains__'"
         v = self.V3D(0, -1, 2)
-        b = 0 in v
+        b = self.V3D.__contains__(v, 0)
         self.assertTrue(b, msg=fail_msg)
         v = self.V3D(0, -1, 2)
-        b = -1 in v
+        b = self.V3D.__contains__(v, -1)
+        self.assertTrue(b, msg=fail_msg)
+        v = self.V3D(0, -1, 2)
+        b = self.V3D.__contains__(v, 1)
+        self.assertFalse(b, msg=fail_msg)
+        v = self.V3D(0.5, -1.5, 2.5)
+        b = v.__contains__(2.5)
         self.assertTrue(b, msg=fail_msg)
         v = self.V3D(0.5, -1.5, 2.5)
-        b = 2.5 in v
-        self.assertTrue(b, msg=fail_msg)
-        v = self.V3D(0.5, -1.5, 2.5)
-        b = -1.0 in v
+        b = v.__contains__(-1.0)
         self.assertFalse(b, msg=fail_msg)
         v = self.V3D(0, -1, 2)
-        b = 1 in v
+        b = v.__contains__(1)
         self.assertFalse(b, msg=fail_msg)
         v = self.V3D(0, -1, 2)
-        b = 3 in v
+        b = v.__contains__(3)
         self.assertFalse(b, msg=fail_msg)
 
 
