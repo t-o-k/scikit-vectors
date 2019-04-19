@@ -260,12 +260,12 @@ def create_class_Tolerant_Versatile_Vector(name, component_names, *, brackets='<
 
             compare_fn = \
                 {
-                    'eq': lambda s, o, t: self.component_and((o - t) <= s, s <= (o + t)),
-                    'ne': lambda s, o, t: self.component_or(s < (o - t), (o + t) < s),
+                    'eq': lambda s, o, t: self.component_and(s >= (o - t), s <= (o + t)),
+                    'ne': lambda s, o, t: self.component_or(s < (o - t), s > (o + t)),
                     'lt': lambda s, o, t: s < (o - t),
-                    'gt': lambda s, o, t: (o + t) < s,
+                    'gt': lambda s, o, t: s > (o + t),
                     'le': lambda s, o, t: s <= (o + t),
-                    'ge': lambda s, o, t: (o - t) <= s
+                    'ge': lambda s, o, t: s >= (o - t)
                 }
             fn = compare_fn[comp_type]
             csot = \
