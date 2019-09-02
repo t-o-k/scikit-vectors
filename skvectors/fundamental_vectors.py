@@ -34,25 +34,6 @@ def check_identifier(identifier):
     return valid_first_char and valid_remaining_chars
 
 
-def verify_names(*, chk_names, ref_names):
-    """
-    Verifies that all names in chk_names also are in ref_names and in the same order.
-    Names that appear multiple times in chk_names should appear the same number of times in ref_names.
-    """
-
-    i_chk = iter(chk_names)
-    i_ref = iter(ref_names)
-    chk = next(i_chk, None)
-    ref = next(i_ref, None)
-    while (chk is not None) and (ref is not None):
-        if chk == ref:
-            chk = next(i_chk, None)
-        ref = next(i_ref, None)
-    names_ok = chk is None
-
-    return names_ok
-
-
 def create_class_Fundamental_Vector(name, component_names, *, brackets='<>', sep=', '):
     """
     Function that creates a fundamental vector class
