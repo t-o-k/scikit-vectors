@@ -11,10 +11,10 @@ with open('README.md', 'r') as fh:
 
 setuptools.setup(
     name = 'scikit-vectors',
-    version = '0.6.5',
+    version = '0.6.6',
     author = 'Tor Olav Kristensen',
     author_email = 'tor.olav.k@gmail.com',
-    description = 'Functions to create n-dimensional vector classes',
+    description = 'A Python library with functions that can create vector classes with 2, 3 or an arbitrary number of dimensions.',
     long_description = long_description,
     long_description_content_type = 'text/markdown',
     url = 'https://github.com/t-o-k/scikit-vectors',
@@ -37,5 +37,6 @@ setuptools.setup(
             'Topic :: Scientific/Engineering :: Visualization',
             'Topic :: Software Development'
         ],
-    test_suite = 'tests'
+    test_suite = 'skvectors.tests'
 )
+
