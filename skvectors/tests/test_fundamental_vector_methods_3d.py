@@ -38,6 +38,9 @@ class Test_Case_fundamental_vector(unittest.TestCase):
         self.assertEqual(v._cvalues, [-3.0, 4.0, -5.0], msg=fail_msg)
         v = self.V3D(0, -1, 2)
         self.assertEqual(v._cvalues, [0, -1, 2], msg=fail_msg)
+        v = self.V3D(1, -2, 3)
+        self.V3D.__init__(v, 4, -1, 0)
+        self.assertEqual(v._cvalues, [4, -1, 0], msg=fail_msg)
         # with self.assertRaises(TypeError, msg=fail_msg):
         #     v = self.V3D(x='a', y='b', z='c')
         with self.assertRaises(TypeError, msg=fail_msg):
