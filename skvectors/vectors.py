@@ -453,18 +453,19 @@ def create_class_Vector(name, component_names, *, brackets='<>', sep=', ', cnull
             return vector
 
 
-        def __bool__(self):
-            """Check if the vector is not a zero vector"""
-
-            is_zero_vector = self.is_zero_vector()
-            try:
-                not_zero_vector = not self.component_all(is_zero_vector)
-            except TypeError:
-                not_zero_vector = None
-            if not_zero_vector is None:
-                not_zero_vector = not is_zero_vector
-
-            return not_zero_vector
+        # This does not work well with SymPy. Use the is_zero_vector() together with not instead.
+        # def __bool__(self):
+        #     """Check if the vector is not a zero vector"""
+        # 
+        #     is_zero_vector = self.is_zero_vector()
+        #     try:
+        #         not_zero_vector = not self.component_all(is_zero_vector)
+        #     except TypeError:
+        #         not_zero_vector = None
+        #     if not_zero_vector is None:
+        #         not_zero_vector = not is_zero_vector
+        # 
+        #     return not_zero_vector
 
 
         def sum_of_components(self):

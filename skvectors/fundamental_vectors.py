@@ -388,6 +388,12 @@ def create_class_Fundamental_Vector(name, component_names, *, brackets='<>', sep
             return not_equal
 
 
+        def __bool__(self):
+            """Disabled method"""
+
+            raise TypeError("The __bool__() method has been disabled in this class.")
+
+
         def __contains__(self, value):
             """Check if a value is equal to any of the vector component values"""
 
