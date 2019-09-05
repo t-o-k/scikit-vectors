@@ -51,7 +51,7 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
                 # 'eq',
                 # 'ne',
                 # 'and',
-                # 'or',
+                'or',
                 # 'all',
                 'min',
                 'max',
@@ -203,7 +203,7 @@ def create_class_Cartesian_Vector(name, component_names, *, brackets='<>', sep='
 
             ls = self.length()
             lo = other.length()
-            is_longer = ls > lo
+            is_longer = lo < ls
 
             return is_longer
 
