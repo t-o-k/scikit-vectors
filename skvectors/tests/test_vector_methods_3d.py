@@ -241,24 +241,24 @@ class Test_Case_vector(unittest.TestCase):
         self.assertFalse(b, msg=fail_msg)
 
 
-    def test_bool(self):
-
-        fail_msg = "Problem with method '__bool__'"
-        v = self.V3D(0, 0, 0)
-        b = self.V3D.__bool__(v)
-        self.assertFalse(b, msg=fail_msg)
-        v = self.V3D(0, 0, 0)
-        b = bool(v)
-        self.assertFalse(b, msg=fail_msg)
-        v = self.V3D(2, 0, 0)
-        b = bool(v)
-        self.assertTrue(b, msg=fail_msg)
-        v = self.V3D(0, -1, 0)
-        b = bool(v)
-        self.assertTrue(b, msg=fail_msg)
-        v = self.V3D(0, 0, 1)
-        b = bool(v)
-        self.assertTrue(b, msg=fail_msg)
+    # def test_bool(self):
+    # 
+    #     fail_msg = "Problem with method '__bool__'"
+    #     v = self.V3D(0, 0, 0)
+    #     b = self.V3D.__bool__(v)
+    #     self.assertFalse(b, msg=fail_msg)
+    #     v = self.V3D(0, 0, 0)
+    #     b = bool(v)
+    #     self.assertFalse(b, msg=fail_msg)
+    #     v = self.V3D(2, 0, 0)
+    #     b = bool(v)
+    #     self.assertTrue(b, msg=fail_msg)
+    #     v = self.V3D(0, -1, 0)
+    #     b = bool(v)
+    #     self.assertTrue(b, msg=fail_msg)
+    #     v = self.V3D(0, 0, 1)
+    #     b = bool(v)
+    #     self.assertTrue(b, msg=fail_msg)
 
 
     def test_sum_of_components(self):
