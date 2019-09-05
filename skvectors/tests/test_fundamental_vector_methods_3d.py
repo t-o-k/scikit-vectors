@@ -543,6 +543,17 @@ class Test_Case_fundamental_vector(unittest.TestCase):
         self.assertTrue(b, msg=fail_msg)
 
 
+    def test_bool(self):
+
+        fail_msg = "Problem with method '__bool__'"
+        u = self.V3D(-1, 2, 3)
+        with self.assertRaises(TypeError, msg=fail_msg):
+            b = bool(u)
+        u = self.V3D(0, 0, 0)
+        with self.assertRaises(TypeError, msg=fail_msg):
+            b = bool(u)
+
+
     def test_contains(self):
 
         fail_msg = "Problem with method '__contains__'"
@@ -695,6 +706,26 @@ class Test_Case_simple_vector(Test_Case_fundamental_vector):
 class Test_Case_vector(Test_Case_simple_vector):
 
     create_vector_class = staticmethod(skvectors.create_class_Vector)
+
+
+    def test_contains(self):
+
+        fail_msg = "Problem with method '__contains__'"
+        v = self.V3D(0, -1, 2)
+        with self.assertRaises(TypeError, msg=fail_msg):
+            b = self.V3D.__contains__(v, 0)
+        v = self.V3D(0, -1, 2)
+        with self.assertRaises(TypeError, msg=fail_msg):
+            b = self.V3D.__contains__(v, 1)
+        v = self.V3D(0.5, -1.5, 2.5)
+        with self.assertRaises(TypeError, msg=fail_msg):
+            b = v.__contains__(-1.0)
+        u = self.V3D(-1, 0, 2)
+        with self.assertRaises(TypeError, msg=fail_msg):
+            b = 0 in u
+        u = self.V3D(-1, 0, 2)
+        with self.assertRaises(TypeError, msg=fail_msg):
+            b = 1 not in u
 
 
 class Test_Case_cartesian_vector(Test_Case_vector):
