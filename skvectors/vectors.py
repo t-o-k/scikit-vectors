@@ -400,6 +400,23 @@ def create_class_Vector(name, component_names, *, brackets='<>', sep=', ', cnull
             return does_not_contain
 
 
+        # __contains__ = contains
+        # This does not always work well with the in operator, because the in operator calls
+        # bool() on the return value from __contains__.
+        # https://stackoverflow.com/questions/38542543/functionality-of-python-in-vs-contains/38542777
+        # Since this causes problems with e.g. numpy and sympy, the __contains__() method is disabled below.
+
+
+        def __contains__(self, value):
+            """Disabled method. Use the contains() or contains_not() methods instead."""
+
+            raise \
+                TypeError(
+                    "The __contains__() method has been disabled in this class. " \
+                    "Use the contains() method or the contains_not() method instead."
+                )
+
+
         def __setitem__(self, index, values):
             """Change vector component values by indexing"""
 
