@@ -27,7 +27,7 @@ The wiki has links to documents that shows how created vector classes can be use
 scikit-vectors requires Python version 3.5 or higher.
 
 ```shell
-pip install scikit-vectors
+pip3 install scikit-vectors
 ```
 
 ## Examples
@@ -118,6 +118,62 @@ SV(first=3000.0, second=-1.0, third=-4000.0, fourth=-2000.0, fifth=28000.0, sixt
 >>> round(v, 3)
 SV(first=0.0, second=0.167, third=0.333, fourth=0.5, fifth=0.667, sixth=0.833)
 >>> 
+```
+
+### Example with SymPy
+
+```python
+>>> from skvectors import create_class_Cartesian_3D_Vector
+>>> import sympy
+>>> sympy_functions = \
+...     {
+...         'eq': sympy.Eq,
+...         'ne': sympy.Ne,
+...         'and': sympy.And,
+...         'or': sympy.Or,
+...         'min': sympy.functions.Min,
+...         'max': sympy.functions.Max,
+...         'cos': sympy.functions.cos,
+...         'sin': sympy.functions.sin,
+...         'atan2': sympy.functions.atan2
+...     }
+>>> V3 = \
+...     create_class_Cartesian_3D_Vector(
+...         'V3',
+...         'αβγ',
+...         cnull = sympy.sympify(0),
+...         cunit = sympy.sympify(1),
+...         functions = sympy_functions
+...     )
+>>> V3.basis_α(), V3.basis_β(), V3.basis_γ()
+(V3(α=1, β=0, γ=0), V3(α=0, β=1, γ=0), V3(α=0, β=0, γ=1))
+>>> x, y, z = sympy.symbols('x y z')
+>>> a, b, c = sympy.symbols('a b c')
+>>> d, e, f = sympy.symbols('d e f')
+>>> u = V3(x, y, z)
+>>> u.contains(2)
+Eq(2, x) | Eq(2, y) | Eq(2, z)
+>>> u = V3(x, y, z)
+>>> u.normalize()
+V3(α=x/sqrt(x**2 + y**2 + z**2), β=y/sqrt(x**2 + y**2 + z**2), γ=z/sqrt(x**2 + y**2 + z**2))
+>>> u = V3(a, b, c)
+>>> v = V3(d, e, f)
+>>> u.are_parallel(v)
+Eq(sqrt((a*e - b*d)**2 + (-a*f + c*d)**2 + (b*f - c*e)**2), 0)
+>>> u = V3(a, b, c)
+>>> v = V3(d, e, f)
+>>> u.project(v)
+V3(α=d*(a*d + b*e + c*f)/(d**2 + e**2 + f**2), β=e*(a*d + b*e + c*f)/(d**2 + e**2 + f**2), γ=f*(a*d + b*e + c*f)/(d**2 + e**2 + f**2))
+>>> u = V3(a, b, c)
+>>> v = V3(d, e, f)
+>>> u.sin(v)
+sqrt((a*e - b*d)**2 + (-a*f + c*d)**2 + (b*f - c*e)**2)/(sqrt(a**2 + b**2 + c**2)*sqrt(d**2 + e**2 + f**2))
+>>> u = V3(x, y, z)
+>>> u.rotate_α(angle=e)
+(V3(α=x, β=y*cos(e) - z*sin(e), γ=y*sin(e) + z*cos(e))
+>>> u = V3(x, y, z)
+>>> u(lambda s: a + s * b)
+V3(α=a + b*x, β=a + b*y, γ=a + b*z)
 ```
 
 ### Not so simple example with NumPy
