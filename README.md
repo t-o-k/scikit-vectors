@@ -42,7 +42,7 @@ In addition to the short examples below, there are some more elaborate ones here
 
 https://github.com/t-o-k/scikit-vectors_examples
 
-The image below is created in one of those examples.
+The Bezier surface in the image below is created in one of those examples by using scikit-vectors, NumPy and Matplotlib.
 
 ![Bezier Surfaces](images/Bezier_Surfaces.png)
 
