@@ -42,6 +42,10 @@ In addition to the short examples below, there are some more elaborate ones here
 
 https://github.com/t-o-k/scikit-vectors_examples
 
+The image below is created in one of those examples.
+
+![Bezier Surfaces](images/Bezier_Surfaces.png)
+
 ### Simple examples
 
 ```python
